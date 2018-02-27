@@ -104,6 +104,9 @@ if os.environ.get("DB") == "mysql":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
+            'HOST': 'healthchecks_db_1',
+            'PORT': os.environ.get("DB_PORT"),
+            'PASSWORD': os.environ.get("DB_PASSWORD"),
             'USER': 'root',
             'NAME': 'hc',
             'TEST': {'CHARSET': 'UTF8'}
@@ -120,7 +123,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-SITE_ROOT = "http://localhost:8000"
+SITE_ROOT = os.environ.get("SITE_ROOT")
 SITE_NAME = MASTER_BADGE_LABEL = "Mychecks"
 PING_ENDPOINT = SITE_ROOT + "/ping/"
 PING_EMAIL_DOMAIN = HOST
